@@ -10,6 +10,17 @@
  
 
 2.PriorityQueue 是一个实体类，不是接口. 它的默认长度是11, DEFAULT_INITIAL_CAPACITY = 11
+默认是缺省的构造是小根堆，大根堆要新建Comparator 
+PriorityQueue<Integer> priorityQueue = new PriorityQueue<>(new Comparator<Integer>() {
+            @Override
+            public int compare(Integer o1, Integer o2) {
+                return o2-o1;
+            }
+        });
+或者 
+PriorityQueue<Integer> priorityQueue = new PriorityQueue<>((o1, o2) -> (o2 - o1));
+
+
 Priority该词体现在类中使用了平衡二叉堆，提高了查询效率.
 数据由内部的一个 Object 数组(queue)存储，这个数组本质上是一个二叉堆,queue[n]的两个子节点分别是queue[2n+1]和queue[2*(n+1)].这个优先队列通过自定义的comparator或者数值的自然顺序排序：该排序作用于堆中的每个节点n，以及n的子节点 d， n<=d. 只要队列不是空的，显然queue[0]就是最小值.
 
